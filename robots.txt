@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://J-H-Hwang.github.io/J-H-Hwang//sitemap.xml
+Sitemap: https://J-H-Hwang.github.io//sitemap.xml
