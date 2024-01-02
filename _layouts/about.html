@@ -11,67 +11,53 @@ layout: default
           <p class="desc">{{ page.subtitle }}</p>
         </header>
 
+        
         <article>
-          {% if page.profile -%}
           <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
-            {%- if page.profile.image %}
-              {%- assign profile_image_path = page.profile.image | prepend: 'assets/img/' -%}
-
-              {% if page.profile.image_circular %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded-circle" -%}
-              {% else %}
-                {%- assign profile_image_class = "img-fluid z-depth-1 rounded" -%}
-              {% endif %}
-
-              {% include figure.html
-              path=profile_image_path
-              class=profile_image_class
-              alt=page.profile.image
-              cache_bust=true -%}
-            {% endif -%}
-            {%- if page.profile.more_info %}
-            <div class="more-info">
-              {{ page.profile.more_info }}
-            </div>
-            {%- endif %}
+            <img src="../assets/img/fig_j.jpg" style="width:160px;height:225px;" >
           </div>
-          {%- endif %}
+          
 
           <div class="clearfix">
             {{ content }}
+          
+            <font size=+0.5><b>Experiences</b></font> <br>
+            &#x2022; Research intern at <a href="https://naver-career.gitbook.io/en/teams/clova-cic">Naver AI LAB</a> (Mar. 2022 - Sep. 2022)
           </div>
-
+          
+  
           <!-- News -->
-          {% if page.news and site.announcements.enabled -%}
+          <!-- {% if page.news and site.announcements.enabled -%}
             <h2><a href="{{ '/news/' | relative_url }}" style="color: inherit;">news</a></h2>
             {%- include news.html limit=true %}
-          {%- endif %}
+          {%- endif %} -->
 
           <!-- Latest posts -->
-          {% if page.latest_posts -%}
+          <!-- {% if page.latest_posts -%}
             <h2><a href="{{ '/blog/' | relative_url }}" style="color: inherit;">latest posts</a></h2>
             {%- include latest_posts.html %}
-          {%- endif %}
+          {%- endif %} -->
 
           <!-- Selected papers -->
-          {% if page.selected_papers -%}
-            <h2><a href="{{ '/publications/' | relative_url }}" style="color: inherit;">selected publications</a></h2>
-            {%- include selected_papers.html %}
-          {%- endif %}
-
+          <br>
+          <hr size=10;>
+          <font size=+2.5><a id="pub" style="color: inherit;"><b>Publications</b></a></font>
+          <!-- <hr size=10;> -->
+          {%- include selected_papers.html %}
+          
+          <br>
+          <hr size=10;>
+          <font size=+2.5><a id="act" style="color: inherit;"><b>Academic activities</b></a></font>
+          <!-- <hr size=10;> -->
+          {%- include academics.html %}
+          <br>
+          <br>
           <!-- Social -->
-          {%- if page.social %}
-            <div class="social">
-              <div class="contact-icons">
-                {% include social.html %}
-              </div>
+          <div class="social">
+            <i class="fa fa-envelope" style="font-size:16px"></i>&nbsp;
+            <font size=-0.5>jaehui.hwang@yonsei.ac.kr</font>
 
-              <div class="contact-note">
-                {{ site.contact_note }}
-              </div>
-
-            </div>
-          {%- endif %}
+          </div>
         </article>
 
 </div>
