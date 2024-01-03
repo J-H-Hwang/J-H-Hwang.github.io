@@ -7,11 +7,14 @@ layout: default
         <header class="post-header">
           <h1 class="post-title">
             {% if site.title == "blank" -%}<span class="font-weight-bold">{{ site.first_name }}</span> {{ site.middle_name }} {{ site.last_name }}{%- else -%}{{ site.title }}{%- endif %}
+            <a href='https://scholar.google.com/citations?hl=ko&user=fkcKO4oAAAAJ'><i class="fa fa-graduation-cap" style="font-size:20px"></i></a>
+            <a href='https://www.linkedin.com/in/jaehui-hwang-1b2a51194/'><i class="fa fa-linkedin-square" style="font-size:21px"></i></a>
+            <a href='https://github.com/J-H-Hwang'><i class="fa fa-github" style="font-size:22px" aria-hidden="true"></i></a>
           </h1>
-          <p class="desc">{{ page.subtitle }}</p>
+            <p class="desc">{{ page.subtitle }}</p>
         </header>
 
-        
+
         <article>
           <div class="profile float-{%- if page.profile.align == 'left' -%}left{%- else -%}right{%- endif -%}">
             <img src="../assets/img/fig_j.jpg" style="width:160px;height:225px;" >
