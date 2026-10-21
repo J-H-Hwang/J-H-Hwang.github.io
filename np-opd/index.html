@@ -20,7 +20,7 @@
   <style>
     :root {
       --ink: #111; --ink2: #3d3d3d; --mut: #6b7280; --rule: #e3e3e3; --soft: #f6f6f6;
-      /* roles, as in the paper's figures and the seminar deck */
+      /* roles: teacher, student, negative policy */
       --teacher: #3e8e5b; --student: #3f64b0; --neg: #d08a2e; --bad: #c0392b; --other: #8a929b;
       --teacher-ink: #2e7348; --student-ink: #2f519a; --neg-ink: #a9650f; --bad-ink: #b03a2e;
       --teacher-bg: #eef6f0; --student-bg: #edf1fa; --neg-bg: #fbf3e8; --bad-bg: #fbeeee;
@@ -274,7 +274,7 @@
 
 <div class="wrap" style="padding-bottom:3rem">
   <video class="teaser" autoplay muted loop playsinline controls preload="auto" poster="assets/teaser_poster.jpg"
-         aria-label="Teaser: DPO, OPD and NP-OPD compared by what the student moves toward and away from; the NP-OPD pipeline; a toy example of why negative-policy rollouts help; and the main results">
+         aria-label="Teaser: whether a negative signal can help on-policy distillation; the NP-OPD pipeline; a toy example of why changing only the rollouts helps; the student moving away from the negative policy; and the main results">
     <source src="assets/teaser.mp4" type="video/mp4">
   </video>
   <p class="tldr"><b class="k">TL;DR</b>NP-OPD trains on rollouts from a lower-capability <b class="or">negative policy</b> using the original distillation reward. These rollouts keep tokens preferred by the negative policy over the teacher exposed to supervision throughout training, improving OPD across model scales, generation modes, reasoning domains, and reward variants.</p>
