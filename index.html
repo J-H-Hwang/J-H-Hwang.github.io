@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Jaehui Hwang</title>
+  <meta name="description" content="Jaehui Hwang, Research Scientist at NAVER AI Lab. Post-training and reasoning of large language models; robustness and analysis of neural networks.">
+  <meta property="og:title" content="Jaehui Hwang">
+  <meta property="og:description" content="Research Scientist, Backbone Research, NAVER AI Lab.">
+  <meta property="og:url" content="https://j-h-hwang.github.io/">
+  <meta property="og:image" content="https://j-h-hwang.github.io/assets/profile.jpg">
+  <link rel="canonical" href="https://j-h-hwang.github.io/">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%220%200%20100%20100%22%3E%3Ctext%20y%3D%22.9em%22%20font-size%3D%2290%22%3E%E2%9D%84%EF%B8%8F%3C%2Ftext%3E%3C%2Fsvg%3E">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --ink: #111; --ink2: #3d3d3d; --mut: #6b7280; --rule: #e6e6e6; --soft: #f6f6f6;
+      --accent: #2f519a; --accent-bg: #edf1fa;
+      --green: #2e7348; --green-bg: #eef6f0;
+      --orange: #a9650f; --orange-bg: #fbf3e8;
+      --sans: "Lato", "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 64px; }
+    body { margin: 0; font-family: var(--sans); font-size: 16.5px; line-height: 1.65; color: var(--ink); background: #fff; -webkit-font-smoothing: antialiased; }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    img { max-width: 100%; }
+    sup { line-height: 0; }
+    .wrap { max-width: 880px; margin: 0 auto; padding-inline: 24px; }
+
+    /* nav */
+    .nav { position: sticky; top: 0; z-index: 20; background: rgba(255,255,255,.95); backdrop-filter: saturate(1.4) blur(6px); border-bottom: 1px solid var(--rule); }
+    .nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 1rem; padding-block: .65rem; }
+    .nav .me { font-weight: 900; color: var(--ink); }
+    .nav .links { display: flex; flex-wrap: wrap; gap: .2rem 1.2rem; font-size: .93rem; }
+    .nav .links a { color: #555; }
+    .nav .links a:hover { color: var(--ink); text-decoration: none; }
+    @media (max-width: 560px) { .nav .me { display: none; } .nav .links { width: 100%; justify-content: center; } }
+
+    /* intro */
+    .intro { display: grid; grid-template-columns: minmax(0, 1fr) 196px; gap: 0 2.4rem; align-items: start; padding-block: 3.2rem 2.4rem; }
+    .intro > .contact, .intro > .mail { grid-column: 1 / -1; }
+    .intro h1 { font-size: 2.5rem; line-height: 1.15; font-weight: 700; letter-spacing: -.012em; margin: 0; }
+    .intro .role { font-size: 1.08rem; color: var(--ink2); margin: .35rem 0 1.2rem; }
+    .intro .role a { color: var(--ink2); border-bottom: 1px solid #c9ced6; }
+    .intro .role a:hover { text-decoration: none; border-color: var(--ink2); }
+    .intro p { margin: 0 0 .85rem; text-wrap: pretty; }
+    .intro .photo { width: 196px; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 14px; border: 1px solid var(--rule); }
+    .contact { display: flex; flex-wrap: wrap; gap: .4rem 1.3rem; margin-top: 1.1rem; }
+    .contact a { display: inline-flex; align-items: center; gap: .4rem; color: var(--ink2); font-size: .95rem; font-weight: 700; white-space: nowrap; }
+    .contact a:hover { color: var(--accent); text-decoration: none; }
+    .contact svg { width: 15px; height: 15px; flex: 0 0 auto; }
+    .contact small { font-weight: 400; color: var(--mut); font-size: .85em; }
+    .mail { font-size: .88rem; color: var(--mut); margin-top: .7rem; }
+    .mail span { white-space: nowrap; }
+    @media (max-width: 680px) {
+      .intro { grid-template-columns: minmax(0, 1fr); gap: 1.4rem; padding-top: 2.2rem; }
+      .intro .photo { width: 150px; order: -1; }
+      .intro h1 { font-size: 2rem; }
+    }
+
+    /* sections */
+    section.sec { border-top: 1px solid var(--rule); padding-block: 2.4rem; }
+    h2 { font-size: 1.5rem; font-weight: 700; letter-spacing: -.01em; margin: 0 0 1.2rem; }
+    h3 { font-size: .78rem; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; color: var(--mut); margin: 2rem 0 .6rem; }
+    h2 + h3, .note + h3 { margin-top: .4rem; }
+    .note { font-size: .85rem; color: var(--mut); margin: -.6rem 0 1.2rem; }
+
+    /* news */
+    .news { list-style: none; margin: 0; padding: 0; }
+    .news li { display: grid; grid-template-columns: 5.6rem minmax(0, 1fr); gap: .8rem; padding: .32rem 0; }
+    .news .d { color: var(--mut); font-variant-numeric: tabular-nums; font-size: .93rem; padding-top: .05rem; }
+
+    /* publications */
+    .pub { padding: .7rem 0; }
+    .pub .t { font-weight: 700; line-height: 1.4; }
+    .pub .t a { color: var(--ink); }
+    .pub .t a:hover { color: var(--accent); text-decoration: none; }
+    .pub .au { color: var(--ink2); font-size: .94rem; margin-top: .12rem; }
+    .pub .au b { color: var(--ink); }
+    .pub .meta { font-size: .9rem; margin-top: .12rem; }
+    .pub .meta .vn { color: var(--mut); font-style: italic; }
+    .pub .meta a { font-weight: 700; }
+    .pub .meta > * + *::before { content: "·"; display: inline-block; color: #b8bcc2; font-weight: 400; font-style: normal; margin: 0 .45rem; }
+    .pub .meta a.hl { color: var(--orange); }
+    .pub .meta .kind { font-size: .7rem; font-weight: 900; letter-spacing: .1em; text-transform: uppercase; vertical-align: .08em; }
+    .kind.k-c { color: var(--accent); } .kind.k-j { color: var(--green); } .kind.k-p { color: #8a929b; }
+
+    /* experience, activities */
+    .rows { list-style: none; margin: 0; padding: 0; }
+    .rows li { display: grid; grid-template-columns: minmax(0, 1fr) auto; column-gap: 1rem; padding: .45rem 0; border-top: 1px solid #f0f1f3; }
+    .rows .what { display: contents; }
+    .rows .what b { grid-column: 1; grid-row: 1; }
+    .rows .when { grid-column: 2; grid-row: 1; }
+    .rows .what small { grid-column: 1 / -1; grid-row: 2; }
+    .rows .what small a { white-space: nowrap; }
+    .rows li:first-child { border-top: 0; }
+    .rows .what b { font-weight: 700; }
+    .rows .what span { color: var(--ink2); }
+    .rows .what small { display: block; color: var(--mut); font-size: .88rem; }
+    .rows .when { color: var(--mut); font-size: .93rem; font-variant-numeric: tabular-nums; white-space: nowrap; }
+    .cols { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 0 2.4rem; }
+    @media (max-width: 680px) { .cols { grid-template-columns: minmax(0, 1fr); } .cols > div + div { margin-top: 2rem; } }
+    .act dt { font-weight: 700; margin-top: .8rem; }
+    .act dt:first-child { margin-top: 0; }
+    .act dd { margin: .1rem 0 0; color: var(--ink2); }
+    .act dd.revs { display: flex; flex-wrap: wrap; gap: .15rem 1.3rem; }
+    .revs span { font-weight: 700; color: var(--ink2); white-space: nowrap; }
+    .revs i { font-style: normal; font-weight: 400; font-size: .85em; color: var(--mut); margin-left: .35rem; }
+
+    footer { border-top: 1px solid var(--rule); padding-block: 1.6rem 2.4rem; color: #8a929b; font-size: .85rem; }
+  </style>
+</head>
+<body>
+
+<nav class="nav" aria-label="Sections">
+  <div class="wrap">
+    <a class="me" href="#">Jaehui Hwang</a>
+    <div class="links">
+      <a href="#news">News</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#activities">Activities</a>
+      <a href="CV_241209.pdf">CV</a>
+    </div>
+  </div>
+</nav>
+
+<main class="wrap">
+
+  <header class="intro">
+    <div>
+      <h1>Jaehui Hwang</h1>
+      <div class="role">Research Scientist, Backbone Research, <a href="https://naver-career.gitbook.io/en/positions/ai-ml" target="_blank" rel="noopener">NAVER AI Lab</a></div>
+      <p>I am a Research Scientist in Backbone Research at NAVER AI Lab. I received my Ph.D. from Yonsei University in 2025, advised by Prof. Jong-Seok Lee at the <a href="http://mcml.yonsei.ac.kr" target="_blank" rel="noopener">MCML (Multimedia Computing and Machine Learning) Group</a>, and my B.S. from Yonsei University in 2019.</p>
+      <p>My research focuses on understanding and improving the behavior of foundation models, including large language models. My recent work examines how LLMs learn to reason and how post-training shapes their behavior, including studies of on-policy distillation, reasoning traces, and the evaluation of reasoning and judgment. My broader interests include out-of-distribution generalization, robustness, and safety. During my Ph.D., I analyzed neural network vulnerabilities and how model architectures and input data shape model&nbsp;behavior.</p>
+    </div>
+    <img class="photo" src="assets/profile.jpg" alt="Jaehui Hwang">
+    <div class="contact">
+      <a href="mailto:jaehui.hwang@navercorp.com"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1.5" y="3" width="13" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.4"/><path d="M2 4l6 4.6L14 4" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linejoin="round"/></svg>Email</a>
+      <a href="https://scholar.google.com/citations?user=fkcKO4oAAAAJ" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M8 2 1 6l7 4 7-4z" fill="currentColor"/><path d="M4 8.2v3.1C5 12.6 6.4 13.3 8 13.3s3-.7 4-2V8.2L8 10.5z" fill="currentColor"/></svg>Google Scholar</a>
+      <a href="https://github.com/J-H-Hwang" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><path fill="currentColor" d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"/></svg>GitHub</a>
+      <a href="https://www.linkedin.com/in/jaehui-hwang-1b2a51194/" target="_blank" rel="noopener"><svg viewBox="0 0 16 16" aria-hidden="true"><rect x="1" y="1" width="14" height="14" rx="3" fill="currentColor"/><path d="M4.4 6.6v5M4.4 4.3v.1M7.3 11.6V6.6m0 2.3c0-1.4 1-2.4 2.1-2.4 1.2 0 2 .8 2 2.4v2.7" fill="none" stroke="#fff" stroke-width="1.5" stroke-linecap="round"/></svg>LinkedIn</a>
+      <a href="CV_241209.pdf"><svg viewBox="0 0 16 16" aria-hidden="true"><path d="M3 1.5h6.6L13 4.9v9.6H3zM9 2.6v3h3M5 8h6M5 10.2h6M5 12.4h4" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>CV <small>(last updated: Dec 2024)</small></a>
+    </div>
+    <div class="mail"><span>jaehui.hwang@navercorp.com</span> &nbsp;·&nbsp; <span>j.jaehui.hwang@gmail.com</span></div>
+  </header>
+
+  <section class="sec" id="news">
+    <h2>News</h2>
+    <ul class="news">
+      <li><span class="d">Oct 2026</span><span><a href="/np-opd/">NP-OPD: On-Policy Distillation with Negative-Policy Rollouts</a> is out. It introduces rollouts from a lower-capability negative policy while preserving the original distillation reward formulation.</span></li>
+      <li><span class="d">Sep 2026</span><span>Two papers to appear at <b>EMNLP 2026</b>, one in the Main Conference and one in Findings.</span></li>
+      <li><span class="d">Jul 2026</span><span><a href="https://arxiv.org/abs/2607.15161" target="_blank" rel="noopener">On-Policy Delta Distillation (OPD²)</a> is on arXiv. It uses a delta signal between the teacher and its base model to capture the changes induced by reasoning tuning.</span></li>
+      <li><span class="d">2025</span><span>Received my Ph.D. from Yonsei University and joined <b>NAVER AI Lab</b> as a Research Scientist.</span></li>
+    </ul>
+  </section>
+
+  <section class="sec" id="publications">
+    <h2>Publications</h2>
+    <p class="note">Newest first &nbsp;·&nbsp; <sup>*</sup> equal contribution &nbsp;·&nbsp; <sup>†</sup> corresponding author</p>
+
+    <div class="pub">
+      <div class="t"><a href="/np-opd/">On-Policy Distillation with Negative-Policy Rollouts</a></div>
+      <div class="au"><b>Jaehui Hwang</b><sup>†</sup>, Dongyoon Han, Sangdoo Yun, Byeongho Heo<sup>†</sup></div>
+      <div class="meta"><span class="kind k-p">Preprint</span><span class="vn">2026</span><a class="hl" href="/np-opd/">Project page</a><a href="https://arxiv.org/abs/2610.07874" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/np-opd" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2609.07103" target="_blank" rel="noopener">Revisiting Complete Reasoning Traces for Post-Training</a></div>
+      <div class="au"><b>Jaehui Hwang</b><sup>†</sup>, Sangdoo Yun, Byeongho Heo, Dongyoon Han<sup>†</sup></div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">EMNLP 2026 Findings</span><a href="https://arxiv.org/abs/2609.07103" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/revisiting-trace" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2609.04753" target="_blank" rel="noopener">Beneath the Surface of Chains-of-Thought: A Mechanistic Interpretation of Reasoning Operations in LLMs</a></div>
+      <div class="au">Seogyeong Jeong, <b>Jaehui Hwang</b>, Dongyoon Han, Geonmo Gu, Alice Oh<sup>†</sup>, Taekyung Kim<sup>†</sup></div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">EMNLP 2026 Main</span><a href="https://arxiv.org/abs/2609.04753" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/beneath-cot" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2608.05802" target="_blank" rel="noopener">On-Policy Delta Distillation for Multilingual Math Reasoning</a></div>
+      <div class="au">Byeongho Heo, <b>Jaehui Hwang</b>, Sangdoo Yun, Dongyoon Han</div>
+      <div class="meta"><span class="kind k-p">Preprint</span><span class="vn">2026</span><a href="https://arxiv.org/abs/2608.05802" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/opd2" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2607.15161" target="_blank" rel="noopener">On-Policy Delta Distillation</a></div>
+      <div class="au">Byeongho Heo, <b>Jaehui Hwang</b>, Sangdoo Yun, Dongyoon Han</div>
+      <div class="meta"><span class="kind k-p">Preprint</span><span class="vn">2026</span><a href="https://arxiv.org/abs/2607.15161" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/opd2" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2602.06393" target="_blank" rel="noopener">MuCo: Multi-turn Contrastive Learning for Multimodal Embedding Model</a></div>
+      <div class="au">Geonmo Gu, Byeongho Heo, Jaemyung Yu, <b>Jaehui Hwang</b>, Taekyung Kim, Sangmin Lee, HeeJae Jun, Yoohoon Kang, Sangdoo Yun<sup>†</sup>, Dongyoon Han<sup>†</sup></div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">CVPR 2026</span><a href="https://arxiv.org/abs/2602.06393" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/naver-ai/muco" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2601.17421" target="_blank" rel="noopener">Oops, Wait: Discourse Tokens Matter in Reasoning Model</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Byeongho Heo, Sangdoo Yun, Dongyoon Han</div>
+      <div class="meta"><span class="kind k-p">Preprint</span><span class="vn">2026</span><a href="https://arxiv.org/abs/2601.17421" target="_blank" rel="noopener">arXiv</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2510.20603" target="_blank" rel="noopener">What Defines Good Reasoning in LLMs? Dissecting Reasoning Steps with Multi-Aspect Evaluation</a></div>
+      <div class="au">Heejin Do, <b>Jaehui Hwang</b>, Dongyoon Han, Seong Joon Oh, Sangdoo Yun<sup>†</sup></div>
+      <div class="meta"><span class="kind k-p">Preprint</span><span class="vn">2025</span><a href="https://arxiv.org/abs/2510.20603" target="_blank" rel="noopener">arXiv</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://openaccess.thecvf.com/content/CVPR2024/html/Hwang_Anomaly_Score_Evaluating_Generative_Models_and_Individual_Generated_Images_based_CVPR_2024_paper.html" target="_blank" rel="noopener">Anomaly Score: Evaluating Generative Models and Individual Generated Images based on Complexity and Vulnerability</a></div>
+      <div class="au"><b>Jaehui Hwang</b><sup>*</sup>, Junghyuk Lee<sup>*</sup>, Jong-Seok Lee</div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">CVPR 2024</span><a href="https://openaccess.thecvf.com/content/CVPR2024/html/Hwang_Anomaly_Score_Evaluating_Generative_Models_and_Individual_Generated_Images_based_CVPR_2024_paper.html" target="_blank" rel="noopener">Paper</a><a href="https://arxiv.org/abs/2312.10634" target="_blank" rel="noopener">arXiv</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://arxiv.org/abs/2210.11407" target="_blank" rel="noopener">Similarity of Neural Architectures using Adversarial Attack Transferability</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Dongyoon Han, Byeongho Heo, Song Park, Sanghyuk Chun<sup>†</sup>, Jong-Seok Lee<sup>†</sup></div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">ECCV 2024</span><a href="https://arxiv.org/abs/2210.11407" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/J-H-Hwang/SAT" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://ieeexplore.ieee.org/document/9804485" target="_blank" rel="noopener">Classifying Gas Data Measured Under Multiple Conditions Using Deep Learning</a></div>
+      <div class="au">Hojung Lee, <b>Jaehui Hwang</b>, Hwin Dol Park, Jaehun Choi, Jong-Seok Lee</div>
+      <div class="meta"><span class="kind k-j">Journal</span><span class="vn">IEEE Access 2022</span><a href="https://ieeexplore.ieee.org/document/9804485" target="_blank" rel="noopener">Paper</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://doi.org/10.1016/j.neunet.2023.10.033" target="_blank" rel="noopener">Temporal Shuffling for Defending Deep Action Recognition Models against Adversarial Attacks</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Huan Zhang, Jun-Ho Choi, Cho-Jui Hsieh, Jong-Seok Lee<sup>†</sup></div>
+      <div class="meta"><span class="kind k-j">Journal</span><span class="vn">Neural Networks 2024</span><a href="https://doi.org/10.1016/j.neunet.2023.10.033" target="_blank" rel="noopener">Paper</a><a href="https://arxiv.org/abs/2112.07921" target="_blank" rel="noopener">arXiv</a><a href="https://github.com/J-H-Hwang/temporal_shuffling" target="_blank" rel="noopener">Code</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://openaccess.thecvf.com/content/ICCV2021/html/Hwang_Just_One_Moment_Structural_Vulnerability_of_Deep_Action_Recognition_Against_ICCV_2021_paper.html" target="_blank" rel="noopener">Just One Moment: Structural Vulnerability of Deep Action Recognition against One Frame Attack</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Jun-Hyuk Kim, Jun-Ho Choi, Jong-Seok Lee</div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">ICCV 2021</span><a href="https://openaccess.thecvf.com/content/ICCV2021/html/Hwang_Just_One_Moment_Structural_Vulnerability_of_Deep_Action_Recognition_Against_ICCV_2021_paper.html" target="_blank" rel="noopener">Paper</a><a href="https://arxiv.org/abs/2011.14585" target="_blank" rel="noopener">arXiv</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://ieeexplore.ieee.org/document/8496883" target="_blank" rel="noopener">Universal Kriging for Loran ASF Map Generation</a></div>
+      <div class="au">Pyo-Woong Son, Jun Hyo Rhee, <b>Jaehui Hwang</b>, Jiwon Seo</div>
+      <div class="meta"><span class="kind k-j">Journal</span><span class="vn">IEEE Transactions on Aerospace and Electronic Systems 2018</span><a href="https://ieeexplore.ieee.org/document/8496883" target="_blank" rel="noopener">Paper</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://ieeexplore.ieee.org/document/8616304" target="_blank" rel="noopener">On the Repeatability of EEG-based Image Quality Assessment</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Seong-Eun Moon, Jong-Seok Lee</div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">IEEE SMC 2018</span><a href="https://ieeexplore.ieee.org/document/8616304" target="_blank" rel="noopener">Paper</a></div>
+    </div>
+    <div class="pub">
+      <div class="t"><a href="https://ieeexplore.ieee.org/document/8552129" target="_blank" rel="noopener">TDOA-based ASF Map Generation to Increase Loran Positioning Accuracy in Korea</a></div>
+      <div class="au"><b>Jaehui Hwang</b>, Pyo-Woong Son, Jiwon Seo</div>
+      <div class="meta"><span class="kind k-c">Conference</span><span class="vn">IEEE ICCE-Asia 2018</span><a href="https://ieeexplore.ieee.org/document/8552129" target="_blank" rel="noopener">Paper</a></div>
+    </div>
+  </section>
+
+  <section class="sec" id="experience">
+    <div class="cols">
+      <div>
+        <h2>Experience</h2>
+        <ul class="rows">
+          <li><span class="what"><b>Research Scientist</b><small>Backbone Research, NAVER AI Lab</small></span><span class="when">2025 – present</span></li>
+          <li><span class="what"><b>Research Intern</b><small>ML Research, NAVER AI Lab<br>Advisors: <a href="https://sanghyukchun.github.io/home/" target="_blank" rel="noopener">Sanghyuk Chun</a>, <a href="https://dongyoonhan.github.io/" target="_blank" rel="noopener">Dongyoon Han</a></small></span><span class="when">Mar 2022 – Sep 2022</span></li>
+        </ul>
+      </div>
+      <div>
+        <h2 style="margin-top:0">Education</h2>
+        <ul class="rows">
+          <li><span class="what"><b>Ph.D.</b><small>School of Integrated Technology, Yonsei University<br>Advisor: Prof. Jong-Seok Lee</small></span><span class="when">2019 – 2025</span></li>
+          <li><span class="what"><b>B.S.</b><small>School of Integrated Technology, Yonsei University<br>Full scholarship (IITP)</small></span><span class="when">2016 – 2019</span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="sec" id="activities">
+    <h2>Academic activities</h2>
+    <dl class="act">
+      <dt>Award</dt>
+      <dd>Merit Academic Paper Award, 2022-2 Yonsei Superior Paper Awards, Dec 2022</dd>
+      <dt>Reviewer</dt>
+      <dd class="revs"><span>ICLR<i>2025–2026</i></span><span>NeurIPS<i>2025–2026</i></span><span>ICML<i>2025–2026</i></span><span>ACL ARR<i>2025–2026</i></span><span>CVPR<i>2022–2024</i></span><span>ICCV<i>2023, 2025</i></span><span>ECCV<i>2022, 2024</i></span><span>TMLR<i>2023–2025</i></span></dd>
+      <dt>Talks</dt>
+      <dd>“Just One Moment: Structural Vulnerability of Deep Action Recognition against One Frame Attack,” Korean Conference on Computer Vision (KCCV), 2022</dd>
+    </dl>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">© 2026 Jaehui Hwang &nbsp;·&nbsp; Last updated October 2026</div>
+</footer>
+
+</body>
+</html>
